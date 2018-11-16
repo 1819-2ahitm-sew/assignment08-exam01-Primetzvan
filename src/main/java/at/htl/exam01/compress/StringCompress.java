@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class StringCompress {
 
     private static final String FILE_NAME = "sample.txt";
+    Scanner sc = new Scanner(System.in);
 
     /**
      * Main-Methode, hier wird das StringCompress-Objekt erstellt
@@ -19,6 +20,7 @@ public class StringCompress {
         String[] text = sc.readFromFile(FILE_NAME);
         sc.print(text);
     }
+
 
 
     /**
@@ -42,8 +44,19 @@ public class StringCompress {
      */
     public String[] readFromFile(String fileName) {
 
+        String [] einlesen = new String[1000];
+        String help;
 
-        return null;
+        try(Scanner sc = new Scanner(new FileReader(fileName))) {
+            for (int j = 0; j < getNoOfLines(FILE_NAME); j++) {
+
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return einlesen;
     }
 
 
@@ -55,6 +68,8 @@ public class StringCompress {
      */
     public void print(String[] lines) {
 
+
+
     }
 
     /**
@@ -65,7 +80,21 @@ public class StringCompress {
      */
     public int getNoOfLines(String fileName) {
 
+        int i = 0;
 
-        return -1;
+        try(Scanner sc = new Scanner(new FileReader(fileName))) {
+            while (fileName.hasnextLine()){
+                i++;
+            }
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return i;
     }
+
+
+
 }
