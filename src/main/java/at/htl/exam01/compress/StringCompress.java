@@ -76,6 +76,8 @@ public class StringCompress {
      * Der Inhalt des String-Arrays wird zeilenweise auf der Console ausgegeben
      *
      *
+     *
+     *
      * @param lines String-Array
      */
     public void print(String[] lines) {
