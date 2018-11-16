@@ -44,12 +44,24 @@ public class StringCompress {
      */
     public String[] readFromFile(String fileName) {
 
-        String [] einlesen = new String[1000];
-        String help;
+        int i = getNoOfLines(FILE_NAME);
+        String [] einlesen = new String[i];
+        int zahl;
+        String help2;
+        String help3;
+        char buchstabe;
+        StringBuilder sb = new StringBuilder();
 
         try(Scanner sc = new Scanner(new FileReader(fileName))) {
-            for (int j = 0; j < getNoOfLines(FILE_NAME); j++) {
-
+            for (int j = 0; j < i; j++) {
+                help2 = sc.nextLine();
+                help3 = help2.substring(1);
+                zahl = Integer.parseInt(help3);
+                buchstabe = help2.charAt(0);
+                for (int x = 0; x < zahl; x++) {
+                    sb.append(buchstabe);
+                }
+                einlesen[j] = sb.toString();
 
             }
         } catch (FileNotFoundException e) {
@@ -67,7 +79,9 @@ public class StringCompress {
      * @param lines String-Array
      */
     public void print(String[] lines) {
-
+        for (int i = 0; i < lines.length; i++) {
+            System.out.println(lines[i]);
+        }
 
 
     }
@@ -83,11 +97,10 @@ public class StringCompress {
         int i = 0;
 
         try(Scanner sc = new Scanner(new FileReader(fileName))) {
-            while (fileName.hasnextLine()){
+            while (sc.hasNextLine()){
+                sc.nextLine();
                 i++;
             }
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

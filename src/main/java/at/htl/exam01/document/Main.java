@@ -22,11 +22,9 @@ public class Main {
      * @param args
      */
 
-
-
     public static void main(String[] args) {
 
-        Document[] array = new Document[1000];
+        Document[] array = new Document[3];
 
         array[0] = new Book("Rowlings", "Harry Potter und der Stein der Weisen");
         array[1] = new Email("Susi","Bewerbung", "CoolCompany");
@@ -46,7 +44,7 @@ public class Main {
                 System.out.print("Book: ");
                 books++;
             }else if(array[i] instanceof Email){
-                System.out.println("Email: ");
+                System.out.print("Email: ");
                 emails++;
             }
 
@@ -54,8 +52,8 @@ public class Main {
 
         }
 
-        System.out.printf("Anzahl Books: %d",books );
-        System.out.printf("Anzahl Email: %d",emails );
+        System.out.printf("\nAnzahl Books: %d",books );
+        System.out.printf("\nAnzahl Email: %d",emails );
     }
 
 

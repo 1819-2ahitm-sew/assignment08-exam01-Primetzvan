@@ -38,9 +38,13 @@ class Book extends Document {
     public String toString(){
         StringBuilder ausgabe = new StringBuilder();
 
+        ausgabe.append("'");
         ausgabe.append(getTitle());
+        ausgabe.append("'");
         ausgabe.append(" von ");
+        ausgabe.append("'");
         ausgabe.append(getAuthor());
+        ausgabe.append("'");
 
         return ausgabe.toString();
     }
@@ -72,11 +76,17 @@ class Email extends Document {
 
         StringBuilder ausgabe = new StringBuilder();
 
+        ausgabe.append("'");
         ausgabe.append(getSubject());
+        ausgabe.append("'");
         ausgabe.append(" von ");
+        ausgabe.append("'");
         ausgabe.append(getAuthor());
+        ausgabe.append("'");
         ausgabe.append(" an ");
+        ausgabe.append("'");
         ausgabe.append(getTo());
+        ausgabe.append("'");
 
         return ausgabe.toString();
     }
