@@ -22,18 +22,16 @@ public class StringCompress {
     }
 
 
-
     /**
-     *
      * Sämtliche Zeilen werden aus der Textdatei eingelesen
      * zB 5A
      * Nun wird in das String-Array AAAAA geschrieben
-     *
+     * <p>
      * Bsp Testdatei
      * 5A
      * 3B
      * 4C
-     *
+     * <p>
      * ergibt eine String-Array mit 3 Elementen
      * AAAAA
      * BBB
@@ -45,38 +43,51 @@ public class StringCompress {
     public String[] readFromFile(String fileName) {
 
         int i = getNoOfLines(FILE_NAME);
-        String [] einlesen = new String[i];
-        int zahl;
-        String help2;
-        String help3;
-        char buchstabe;
-        StringBuilder sb = new StringBuilder();
+        String[] fertigeBuchstaben = new String[i];
+//        int zahl;
+//        String help3;
+//        char buchstabe;
 
-        try(Scanner sc = new Scanner(new FileReader(fileName))) {
-            for (int j = 0; j < i; j++) {
-                help2 = sc.nextLine();
-                help3 = help2.substring(1);
-                zahl = Integer.parseInt(help3);
-                buchstabe = help2.charAt(0);
-                for (int x = 0; x < zahl; x++) {
-                    sb.append(buchstabe);
+        try (Scanner sc = new Scanner(new FileReader(fileName))) {
+//            for (int j = 0; j < i; j++) {
+//                String eingelesen = sc.nextLine();
+//                help3 = eingelesen.substring(1);
+//                zahl = Integer.parseInt(help3);
+//                buchstabe = eingelesen.charAt(0);
+//                for (int x = 0; x < zahl; x++) {
+//                    sb.append(buchstabe);
+//                }
+//                fertigeBuchstaben[j] = sb.toString();
+//
+//                for (int x = 0; x < zahl; x++) {
+//                    sb.append(buchstabe);
+//                }
+            int lineNo = 0;
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine();
+                char letter = line.charAt(0);
+                String noStr = line.substring(1);
+                int zahl = Integer.parseInt(noStr);
+
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < zahl; j++) {
+                    sb.append(letter);
                 }
-                einlesen[j] = sb.toString();
+                fertigeBuchstaben[lineNo] = sb.toString();
 
+
+                lineNo++;
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        return einlesen;
+        return fertigeBuchstaben;
     }
 
 
     /**
      * Der Inhalt des String-Arrays wird zeilenweise auf der Console ausgegeben
-     *
-     *
-     *
      *
      * @param lines String-Array
      */
@@ -98,8 +109,8 @@ public class StringCompress {
 
         int i = 0;
 
-        try(Scanner sc = new Scanner(new FileReader(fileName))) {
-            while (sc.hasNextLine()){
+        try (Scanner sc = new Scanner(new FileReader(fileName))) {
+            while (sc.hasNextLine()) {
                 sc.nextLine();
                 i++;
             }
@@ -109,7 +120,6 @@ public class StringCompress {
 
         return i;
     }
-
 
 
 }
